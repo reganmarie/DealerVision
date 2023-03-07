@@ -20,7 +20,7 @@ class Service(models.Model):
     owner_name = models.CharField(max_length=200)
     date = models.DateTimeField()
     reason = models.CharField(max_length=200)
-    isVIP = models.BooleanField(null=False, default=False)
+    isVIP = models.BooleanField(null=True, default=True)
 
     technician = models.ForeignKey (
         Technician,
