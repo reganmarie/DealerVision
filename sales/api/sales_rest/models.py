@@ -10,24 +10,19 @@ class AutomobileVO(models.Model):
 
 class SalesPerson(models.Model):
     name = models.CharField(max_length=40)
-    employee_number = models.CharField(max_length=10, unique=True)
+    employee_number = models.CharField(max_length=10)
 
     def __str__(self):
-        return self.model_name
+        return self.name
 
-    def get_api_url(self):
-        return reverse("api_show_sales_person", kwargs={"id": self.id})
 
 class Customer(models.Model):
     name = models.CharField(max_length=40)
     address = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=10, unique=True)
+    phone_number = models.CharField(max_length=10)
 
     def __str__(self):
-        return self.model_name
-
-    def get_api_url(self):
-        return reverse("api_show_customers", kwargs={"id": self.id})
+        return self.name
 
 
 class SalesRecord(models.Model):
@@ -51,7 +46,7 @@ class SalesRecord(models.Model):
         on_delete=models.PROTECT,
     )
     def __str__(self):
-        return self.model_name
+        return self.salesperson
 
     def get_api_url(self):
         return reverse("api_show_sales_records", kwargs={"id": self.id})
