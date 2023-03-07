@@ -45,8 +45,3 @@ class SalesRecord(models.Model):
         related_name="sales_record",
         on_delete=models.PROTECT,
     )
-    def __str__(self):
-        return self.salesperson
-
-    def get_api_url(self):
-        return reverse("api_show_sales_records", kwargs={"id": self.id})

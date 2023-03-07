@@ -167,6 +167,7 @@ def api_show_salesperson(request, id):
 def api_list_sales_records(request):
     if request.method == "GET":
         sales_records = SalesRecord.objects.all()
+        print(sales_records)
         return JsonResponse(
             {"sales_records": sales_records},
             encoder=SalesRecordEncoder,
@@ -221,48 +222,6 @@ def api_show_sales_records(request, id):
             encoder=SalesRecordEncoder,
             safe=False,
         )
-    elif request.method == "DELETE":
+    else:
         count, _ = SalesRecord.objects.filter(id=id).delete()
         return JsonResponse({"deleted": count > 0})
-
-    else:
-        content = json.loads(request.body)
-        print(content)
-
-        try:
-            salesperson = content['salesperson']
-            salesperson = SalesPerson.objects.get(name=content["salesperson"])
-            content["salesperson"] = salesperson
-        except SalesPerson.DoesNotExist:
-            return JsonResponse(
-                {"message": "Invalid Sales Representative"},
-                status=400,
-            )
-
-        try:
-            customer = content['customer']
-            customer = Customer.objects.get(name=content["customer"])
-            content["customer"] = customer
-        except Customer.DoesNotExist:
-            return JsonResponse(
-                {"message": "Invalid Customer"},
-                status=400,
-            )
-
-        try:
-            automobile_href = content['automobile']
-            automobile = AutomobileVO.objects.get(import_href=automobile_href)
-            content["automobile"] = bin
-        except AutomobileVO.DoesNotExist:
-            return JsonResponse(
-                {"message": "Invalid Car"},
-                status=400,
-            )
-
-        SalesRecord.objects.filter(id=id).update(**content)
-        SalesRecord = SalesRecord.objects.get(id=id)
-        return JsonResponse(
-            sales_record,
-            encoder=SalesRecordEncoder,
-            safe=False,
-        )
