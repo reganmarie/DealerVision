@@ -1,8 +1,8 @@
 CarCar
 Team:
 
-Person 1 - Which microservice?
-Regan Tewksbury - Sales Microservice
+* Person 1 - Jackie Liu service microservice
+* Person 2 - Regan Tewksbury: Sales microservice
 
 
 To Run:
