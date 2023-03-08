@@ -4,14 +4,15 @@ import Nav from './Nav';
 import ManufacturersList from './ManufacturersList'
 import ManufacturerForm from './ManufacturerForm';
 import AutomobileForm from './AutomobileForm';
+import ListModels from './ModelList';
+import NewModelForm from './ModelForm';
+import ListAutomobiles from './AutomobileList';
 
 function App(props) {
   if (props.manufacturers === undefined && props.models === undefined && props.automobiles === undefined) {
     return null;
   }
-import ListModels from './ModelList';
-import NewModelForm from './ModelForm';
-import ListAutomobiles from './AutomobileList';
+
 
   return (
     <BrowserRouter>
@@ -28,11 +29,11 @@ import ListAutomobiles from './AutomobileList';
           <Route path="automobile">
             <Route path="new" element={<AutomobileForm />} />
           </Route>
+          <Route path="automobiles" element={<ListAutomobiles />} />
           <Route path="models">
             <Route index element={<ListModels />} />
             <Route path="new" element={<NewModelForm />} />
           </Route>
-          <Route path="automobiles" element={<ListAutomobiles />} />
         </Routes>
       </div>
     </BrowserRouter>
