@@ -58,19 +58,19 @@ function NewModelForm() {
           <h1>Create a vehicle model</h1>
           <form onSubmit={handleSubmit} id="create-model-form">
             <div className="form-floating mb-3">
-              <input onChange={handleNameChange} placeholder="Name" required type="text" name="name" id="name" className="form-control" />
+              <input onChange={handleNameChange} value={name} placeholder="Name" required type="text" name="name" id="name" className="form-control" />
               <label htmlFor="name">Name</label>
             </div>
             <div className="form-floating mb-3">
-              <input onChange={handlePictureUrlChange} placeholder="Picture URL" required type="text" name="picture_url" id="picture_url" className="form-control" />
+              <input onChange={handlePictureUrlChange} value={pictureUrl} placeholder="Picture URL" required type="text" name="picture_url" id="picture_url" className="form-control" />
               <label htmlFor="picture_url">Picture URL</label>
             </div>
             <div className="mb-3">
-              <select onChange={handleManufacturerChange} required name="manufacturer" id="manufacturer" className="form-select">
+              <select onChange={handleManufacturerChange} value={manufacturer} required name="manufacturer" id="manufacturer" className="form-select">
                 <option value="">Choose a manufacturer</option>
                 {manufacturers.map(manufacturer => {
                   return (
-                    <option key={manufacturer.href} value={manufacturer.id}>{manufacturer.name}</option>
+                    <option key={manufacturer.id} value={manufacturer.id}>{manufacturer.name}</option>
                   )
                 })}
               </select>
