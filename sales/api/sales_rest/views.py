@@ -213,7 +213,7 @@ def api_list_sales_records(request):
             safe=False,
         )
 
-@require_http_methods(["GET", "PUT", "DELETE"])
+@require_http_methods(["GET", "DELETE"])
 def api_show_sales_records(request, id):
     if request.method == "GET":
         sales_record = SalesRecord.objects.get(id=id)

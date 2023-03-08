@@ -9,6 +9,9 @@ function App(props) {
   if (props.manufacturers === undefined && props.models === undefined && props.automobiles === undefined) {
     return null;
   }
+import ListModels from './ModelList';
+import NewModelForm from './ModelForm';
+import ListAutomobiles from './AutomobileList';
 
   return (
     <BrowserRouter>
@@ -25,6 +28,11 @@ function App(props) {
           <Route path="automobile">
             <Route path="new" element={<AutomobileForm />} />
           </Route>
+          <Route path="models">
+            <Route index element={<ListModels />} />
+            <Route path="new" element={<NewModelForm />} />
+          </Route>
+          <Route path="automobiles" element={<ListAutomobiles />} />
         </Routes>
       </div>
     </BrowserRouter>
