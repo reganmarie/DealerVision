@@ -70,7 +70,7 @@ function NewModelForm() {
                 <option value="">Choose a manufacturer</option>
                 {manufacturers.map(manufacturer => {
                   return (
-                    <option key={manufacturer.href} value={manufacturer.id}>{manufacturer.name}</option>
+                    <option key={manufacturer.id} value={manufacturer.id}>{manufacturer.name}</option>
                   )
                 })}
               </select>

@@ -16,13 +16,20 @@ function AutomobileForm () {
         const value = event.target.value;
         setYear(value);
     }
-    const handleVINChange = (event) => {
+    const handleVinChange = (event) => {
         const value = event.target.value;
         setVin(value);
     }
     const handleModelChange = (event) => {
         const value = event.target.value;
         setModel(value);
+    }
+
+    const resetState = () => {
+        setColor('');
+        setYear('');
+        setVin('');
+        setModel('');
     }
 
     const handleSubmit = async (event) => {
@@ -33,7 +40,7 @@ function AutomobileForm () {
         data.color = color;
         data.year = year;
         data.vin = vin;
-        data.model = model;
+        data.model_id = model;
 
         const autoUrl = 'http://localhost:8100/api/automobiles/'
         const fetchConfig = {
@@ -87,7 +94,7 @@ function AutomobileForm () {
                         <label htmlFor="year">Year</label>
                     </div>
                     <div className="form-floating mb-3">
-                        <input onChange={handleVINChange} value={vin} placeholder="VIN" required type="text" name="vin" id="vin" className="form-control" />
+                        <input onChange={handleVinChange} value={vin} placeholder="VIN" required type="text" name="vin" id="vin" className="form-control" />
                         <label htmlFor="vin">VIN</label>
                     </div>
                     <div className="mb-3">
@@ -95,7 +102,7 @@ function AutomobileForm () {
                             <option value="">Choose a model</option>
                             {models.map(model => {
                                 return(
-                                    <option key={model.href} value={model.href}>
+                                    <option key={model.id} value={model.id}>
                                         {model.name}
                                     </option>
                                 );
