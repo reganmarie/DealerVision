@@ -12,7 +12,7 @@ function ListAutomobiles(props) {
       if (response.ok) {
         const data = await response.json();
         const autos = data.autos;
-        console.log(autos);
+
         setAutos(autos);
       } else {
         console.log('error');

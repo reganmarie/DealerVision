@@ -7,6 +7,8 @@ import AutomobileForm from './AutomobileForm';
 import ListModels from './ModelList';
 import NewModelForm from './ModelForm';
 import ListAutomobiles from './AutomobileList';
+import NewSalesPersonForm from './SalesPersonForm';
+import NewCustomerForm from './CustomerForm';
 
 function App(props) {
   if (props.manufacturers === undefined && props.models === undefined && props.automobiles === undefined) {
@@ -35,6 +37,12 @@ function App(props) {
           <Route path="models">
             <Route index element={<ListModels />} />
             <Route path="new" element={<NewModelForm />} />
+          </Route>
+          <Route path="salesperson">
+            <Route path="new" element={<NewSalesPersonForm />} />
+          </Route>
+          <Route path="customer">
+            <Route path="new" element={<NewCustomerForm />} />
           </Route>
         </Routes>
       </div>
