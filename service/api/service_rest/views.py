@@ -6,6 +6,13 @@ import json
 from common.json import ModelEncoder
 from .models import Service, Technician, AutoVO
 
+class TechnicianEncoder(ModelEncoder):
+    model = Technician
+    properties = [
+        "name",
+        "id",
+    ]
+
 class ServiceListEncoder(ModelEncoder):
     model = Service
     properties = [
@@ -13,6 +20,7 @@ class ServiceListEncoder(ModelEncoder):
         "date",
         "reason",
         "isVIP",
+        "technician",
     ]
 
     def get_extra_data(self, o):
@@ -33,9 +41,11 @@ class ServiceDetailEncoder(ModelEncoder):
         "reason",
         "isVIP",
         "auto",
+        "technician",
     ]
     encoders = {
         "auto": AutoVODetailEncoder(),
+        "technician": TechnicianEncoder(),
     }
 
 @require_http_methods(["GET", "POST"])
@@ -73,9 +83,12 @@ def api_list_technicians(request):
 
 
 @require_http_methods(["GET", "POST"])
-def api_list_services(request):
+def api_list_services(request, auto_vo_id=None):
     if request.method == "GET":
-        services = Service.objects.all()
+        if auto_vo_id is not None:
+            services = Service.objects.filter(auto=auto_vo_id)
+        else:
+            services = Service.objects.all()
         return JsonResponse(
             {"services": services},
             encoder=ServiceDetailEncoder,
@@ -90,6 +103,16 @@ def api_list_services(request):
         except AutoVO.DoesNotExist:
             return JsonResponse(
                 {"Message": "invalid auto"},
+                status=400
+            )
+
+        try:
+            technician_name = content["technician"]
+            technician = Technician.objects.get(name=technician_name)
+            content['technician'] = technician
+        except Technician.DoesNotExist:
+            return JsonResponse(
+                {"Message": "invalid technician"},
                 status=400
             )
 
