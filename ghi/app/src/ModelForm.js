@@ -28,6 +28,7 @@ function NewModelForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     const data = {};
     data.name = name;
     data.picture_url = pictureUrl;
@@ -44,7 +45,6 @@ function NewModelForm() {
     const response = await fetch(modelUrl, fetchOptions);
     if (response.ok) {
         const newModel = await response.json();
-
         setName('');
         setPictureUrl('');
         setManufacturer('');
