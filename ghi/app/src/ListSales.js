@@ -53,6 +53,7 @@ function SalesRecordsBySalesPerson() {
                 <thead>
                     <tr>
                         <th>Sales person</th>
+                        <th>Employee Number</th>
                         <th>Customer</th>
                         <th>Vin</th>
                         <th>Price</th>
@@ -69,6 +70,7 @@ function SalesRecordsBySalesPerson() {
                     return (
                     <tr key={salesrecord.id}>
                         <td>{salesrecord.salesperson.name}</td>
+                        <td>{salesrecord.salesperson.employee_number}</td>
                         <td>{salesrecord.customer.name}</td>
                         <td>{salesrecord.automobile.vin}</td>
                         <td>{salesrecord.price}</td>

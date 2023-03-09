@@ -20,6 +20,22 @@ function NewSalesRecordForm() {
   const[price, setPrice] = useState('');
   const handlePriceChange = event => setPrice(event.target.value)
 
+  const [records, setRecords] = useState([]);
+
+  const fetchRecords = async () => {
+    const url = 'http://localhost:8090/api/salesrecords/';
+    const response = await fetch(url);
+    if (response.ok) {
+      const data = await response.json();
+      setRecords(data.sales_records);
+      console.log(data);
+    }
+  }
+
+  useEffect(() => {
+    fetchRecords();
+  }, []);
+
   const fetchAutomobiles = async () => {
     const url = 'http://localhost:8100/api/automobiles/';
     const response = await fetch(url);
@@ -95,11 +111,18 @@ function NewSalesRecordForm() {
           <div className="mb-3">
               <select onChange={handleAutomobileChange} value={automobile} required name="automobile" id="automobile" className="form-select">
                 <option value="">Choose an Automobile</option>
-                {autos.map(auto => {
-                  return (
-                    <option key={auto.id} value={auto.href}>{auto.vin}</option>
-                  )
-                })}
+                {autos.filter(auto => {
+                  for (let record of records) {
+                    if (auto.vin === record.automobile.vin) {
+                      return false;
+                    }
+                  }
+                  return true;
+                }).map(auto => {
+                    return (
+                      <option key={auto.id} value={auto.href}>{auto.vin}</option>
+                    )
+                  })}
               </select>
             </div>
             <div className="mb-3">
