@@ -77,11 +77,13 @@ docker-compose up
 
 #### Creating, Getting, and Updating a single manufacturer:
 
+
    {
     "href": "/api/manufacturers/1/",
     "id": 1,
     "name": "Chrysler"
     }
+
 
 #### Getting a list of manufacturers:
 
@@ -97,11 +99,13 @@ docker-compose up
 
 #### Creating and updating a vehicle model:
 
+
    {
         "name": "Sebring",
         "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
         "manufacturer_id": 1
     }
+
 
 
 #### Updating the vehicle model:
@@ -393,7 +397,7 @@ CRUD information here
 #####
 ## Design
 
-![ProjectBetaDiagram](https://drive.google.com/file/d/12KdmpAlOkveg2fd9eIB1R8qkCj71ZWX5/view?usp=sharing)
+![ProjectBetaDiagram](https://drive.google.com/file/d/12KdmpAlOkveg2fd9eIB1R8qkCj71ZWX5/view?usp=sharing.png)
 
 Service Value Objects
     -Imported the VIN from the Automobile model in the Inventory microservice
