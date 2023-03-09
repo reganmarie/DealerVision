@@ -392,7 +392,7 @@ CRUD information here
 #####
 ## Design
 
-![ProjectBetaDiagram](./projectBetaDiagram.png)
+![ProjectBetaDiagram](https://images.pexels.com/photos/15862616/pexels-photo-15862616.png)
 
 Service Value Objects
     -Imported the VIN from the Automobile model in the Inventory microservice
