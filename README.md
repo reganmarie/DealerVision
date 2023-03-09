@@ -65,7 +65,7 @@ docker-compose up
 
 #####
 ## CRUD Route Documentation
-## Inventory Microservice CRUD Route Documentation
+### Inventory Microservice CRUD Route Documentation
 
 <br>
 
@@ -77,7 +77,6 @@ docker-compose up
 
 #### Creating, Getting, and Updating a single manufacturer:
 
-   ```
    {
     "href": "/api/manufacturers/1/",
     "id": 1,
@@ -394,6 +393,11 @@ CRUD information here
 #####
 ## Design
 
+![ProjectBetaDiagram](https://drive.google.com/file/d/12KdmpAlOkveg2fd9eIB1R8qkCj71ZWX5/view?usp=sharing)
+
+Service Value Objects
+    -Imported the VIN from the Automobile model in the Inventory microservice
+    -The poller also imported the href of the instance of the automobile object it was creating or updating
 
 Sales Value Objects:
     -Imported the VIN from the Automobile model in the Inventory microservice
