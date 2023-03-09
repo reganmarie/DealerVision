@@ -5,9 +5,9 @@ function ServiceForm () {
     const [technicians, setTechnicians] = useState([])
 
     const [ownerName, setOwnerName] = useState('')
-    const [dateTime, setDateTime] = useState('')
+    const [date, setDate] = useState('')
     const [reason, setReason] = useState('')
-    const [vin, setVin] = useState('')
+    // const [vin, setVin] = useState('')
     const [technician, setTechnician] = useState('')
     const [auto, setAuto] = useState('')
 
@@ -15,18 +15,18 @@ function ServiceForm () {
         const value = event.target.value;
         setOwnerName(value)
     }
-    const handleDateTimeChange = (event) => {
+    const handleDateChange = (event) => {
         const value = event.target.value;
-        setDateTime(value)
+        setDate(value)
     }
     const handleReasonChange = (event) => {
         const value = event.target.value;
-        setDateTime(value)
+        setReason(value)
     }
-    const handleVinChange = (event) => {
-        const value = event.target.value;
-        setVin(value)
-    }
+    // const handleVinChange = (event) => {
+    //     const value = event.target.value;
+    //     setVin(value)
+    // }
     const handleTechnicianChange = (event) => {
         const value = event.target.value;
         setTechnician(value)
@@ -42,9 +42,9 @@ function ServiceForm () {
         const data = {}
 
         data.owner_name = ownerName
-        data.date_time = dateTime
+        data.date = date
         data.reason = reason
-        data.vin = vin
+        // data.vin = vin
         data.technician = technician
         data.auto = auto
 
@@ -62,9 +62,9 @@ function ServiceForm () {
             const newService = await serviceResponse.json();
 
             setOwnerName('');
-            setDateTime('');
+            setDate('');
             setReason('');
-            setVin('');
+            // setVin('');
             setTechnician('');
             setAuto('');
         }
@@ -99,11 +99,11 @@ function ServiceForm () {
                     <label htmlFor="owner_name">Owner Name</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input onChange={handleDateTimeChange} value={dateTime} placeholder="Date Time" required type="text" name="date_time" id="date_time" className="form-control" />
-                    <label htmlFor="date_time">Date Time YYYY-MM-DD HH:MM AM/PM</label>
+                    <input onChange={handleDateChange} value={date} placeholder="date" required type="datetime-local" name="date" id="date" className="form-control"/>
+                    <label htmlFor="date">Date Time</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input onChange={handleReasonChange} value={reason} placeholder="reason" required type="text" name="reason" id="reason" className="form-control" />
+                    <textarea onChange={handleReasonChange} value={reason} placeholder="reason" required type="text" name="reason" id="reason" className="form-control"></textarea>
                     <label htmlFor="reason">Reason</label>
                 </div>
                 <div className="mb-3">
@@ -111,7 +111,7 @@ function ServiceForm () {
                         <option value="">Assign a technician</option>
                         {technicians.map(technician => {
                             return(
-                                <option key={technician.id} value={technician.id}>
+                                <option key={technician.name} value={technician.name}>
                                     {technician.name}
                                 </option>
                             );
@@ -119,7 +119,7 @@ function ServiceForm () {
                     </select>
                 </div>
                 <div className="mb-3">
-                    <select onChange={handleAutoChange} value={auto} required id="auto" name="auto" className="form-select">
+                    <select onChange={handleAutoChange} value={auto} id="auto" name="auto" className="form-select">
                         <option value="">Choose a VIN</option>
                         {autos.map(auto => {
                             return(
@@ -130,11 +130,11 @@ function ServiceForm () {
                         })}
                     </select>
                 </div>
-                <p>OR</p>
+                {/* <p>OR</p>
                 <div className="form-floating mb-3">
-                    <input onChange={handleVinChange} value={vin} placeholder="vin" required type="text" vin="vin" id="vin" className="form-control" />
+                    <input onChange={handleVinChange} value={vin} placeholder="vin" type="text" name="vin" id="vin" className="form-control" />
                     <label htmlFor="vin">Enter VIN</label>
-                </div>
+                </div> */}
                 <button className="btn btn-primary">Create</button>
                 </form>
             </div>

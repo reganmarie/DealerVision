@@ -20,7 +20,8 @@ class Service(models.Model):
     owner_name = models.CharField(max_length=200)
     date = models.DateTimeField()
     reason = models.CharField(max_length=200)
-    isVIP = models.BooleanField(null=True, default=True)
+    isVIP = models.BooleanField(default=False)
+    finish = models.BooleanField(default=False)
 
     technician = models.ForeignKey (
         Technician,
@@ -38,6 +39,10 @@ class Service(models.Model):
 
     def __str__(self):
         return self.owner_name
+
+    def finish(self):
+        self.finish = True
+        self.save()
 
     def get_api_url(self):
         return reverse("api_show_service", kwargs={"id": self.id})
