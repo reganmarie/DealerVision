@@ -99,8 +99,8 @@ function ServiceForm () {
                     <label htmlFor="owner_name">Owner Name</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input onChange={handleDateChange} value={date} placeholder="date" required type="datetime" name="date" id="date" className="form-control" />
-                    <label htmlFor="date">Date YYYY-MM-DD HH:MM</label>
+                    <input onChange={handleDateChange} value={date} placeholder="date" required type="datetime-local" name="date" id="date" className="form-control"/>
+                    <label htmlFor="date">Date Time</label>
                 </div>
                 <div className="form-floating mb-3">
                     <textarea onChange={handleReasonChange} value={reason} placeholder="reason" required type="text" name="reason" id="reason" className="form-control"></textarea>
