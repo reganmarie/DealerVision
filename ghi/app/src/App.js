@@ -15,6 +15,7 @@ import TechnicianForm from './TechnicianForm';
 import TechniciansList from './TechniciansList';
 import NewSalesRecordForm from './SalesRecordForm';
 import SalesRecordsBySalesPerson from './ListSales';
+import HistoryList from './HistoryList';
 
 function App(props) {
   if (props.manufacturers === undefined && props.models === undefined && props.automobiles === undefined) {
@@ -55,6 +56,9 @@ function App(props) {
           </Route>
           <Route path="services">
             <Route path="" element={<ServicesList services={props.services} />} />
+          </Route>
+          <Route path="services">
+            <Route path="history" element={<HistoryList services={props.services} />} />
           </Route>
           <Route path="technicians">
             <Route path="new" element={<TechnicianForm />} />

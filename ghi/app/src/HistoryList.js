@@ -1,8 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import ServicesList from './ServicesList';
 
-function HistoryList(props) {
-    cosnt [services, setServices] = useState([]);
+
+function HistoryList() {
+    const [services, setServices] = useState([]);
+    const [vin, setVin] = useState('');
+
+    const handleVinChange = (event) => {
+        const value = event.target.value;
+        setVin(value)
+    }
 
     useEffect(() => {
         const fetchConfig = async () => {
@@ -14,12 +20,23 @@ function HistoryList(props) {
                 setServices(data.services);
             }
         }
-
         fetchConfig();
-    }, [])
-    
+    }, []);
+
+    const filteredServices = services.filter((service) => {
+        if (!vin) {
+            return true;
+        }
+        return service.auto.vin === vin
+    })
+
+
     return (
         <div>
+            <div className="mt-3 mb-3">
+                <input type="text" className="btn btn-outline-success" value={vin} id="form1" onChange={handleVinChange} />
+                <button onClick={handleVinChange} type="button" className="btn btn-outline-success">Search</button>
+            </div>
             <h1>History of Service appointments</h1>
             <table className="table table-striped">
             <thead>
@@ -32,7 +49,8 @@ function HistoryList(props) {
                 </tr>
             </thead>
             <tbody>
-                {props.services.map(service => {
+                {filteredServices.map(service => {
+                    
                     return (
                         <tr key={service.href}>
                             <td>{ service.auto.vin }</td>
