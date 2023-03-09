@@ -12,30 +12,37 @@ docker-compose up
 
 ######
 ## URLs and Ports
-## Inventory:
+### Inventory:
     Port 8100 for Insomnia
     Port 3000 for React Front End
+
     List manufacturers (GET): http://localhost:8100/api/manufacturers/
     Create a manufacturer (POST): http://localhost:8100/api/manufacturers/
     Get a specific manufacturer (GET): http://localhost:8100/api/manufacturers/:id/
     Update a specific manufacturer (PUT):	http://localhost:8100/api/manufacturers/:id/
     Delete a specific manufacturer (DELETE): http://localhost:8100/api/manufacturers/:id/
+
     List vehicle models (GET): http://localhost:8100/api/models/
     Create a vehicle model (POST): http://localhost:8100/api/models/
     Get a specific vehicle model (GET): http://localhost:8100/api/models/:id/
     Update a specific vehicle model (PUT): http://localhost:8100/api/models/:id/
     Delete a specific vehicle model (DELETE): http://localhost:8100/api/models/:id/
+
     List automobiles (GET): http://localhost:8100/api/automobiles/
     Create an automobile (POST): http://localhost:8100/api/automobiles/
     Get a specific automobile (GET): http://localhost:8100/api/automobiles/:vin/
     Update a specific automobile (PUT): http://localhost:8100/api/automobiles/:vin/
     Delete a specific automobile (DELETE): http://localhost:8100/api/automobiles/:vin/
 
-## Service:
+<br>
+
+### Service:
     Port 8080 for Insomnia
     Port 3000 for React Front End
 
-## Sales:
+<br>
+
+### Sales:
     Port 8090 for Insomnia
     Port 3000 for React Front End
 
@@ -59,21 +66,25 @@ docker-compose up
 #####
 ## CRUD Route Documentation
 ## Inventory Microservice CRUD Route Documentation
-Create and Update a manufacturer:
+
+<br>
+
+#### Create and Update a manufacturer:
 
     {
     "name": "Chrysler"
     }
 
-Creating, Getting, and Updating a single manufacturer:
+#### Creating, Getting, and Updating a single manufacturer:
 
-    {
+   ```
+   {
     "href": "/api/manufacturers/1/",
     "id": 1,
     "name": "Chrysler"
     }
 
-Getting a list of manufacturers:
+#### Getting a list of manufacturers:
 
     {
         "manufacturers": [
@@ -85,7 +96,7 @@ Getting a list of manufacturers:
         ]
     }
 
-Creating and updating a vehicle model:
+#### Creating and updating a vehicle model:
 
    {
         "name": "Sebring",
@@ -93,14 +104,15 @@ Creating and updating a vehicle model:
         "manufacturer_id": 1
     }
 
-Updating the vehicle model:
+
+#### Updating the vehicle model:
 
     {
         "name": "Sebring",
         "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg"
     }
 
-Getting the detail of, creating, or updating a vehicle model:
+#### Getting the detail of, creating, or updating a vehicle model:
 
     {
         "href": "/api/models/1/",
@@ -114,7 +126,7 @@ Getting the detail of, creating, or updating a vehicle model:
         }
     }
 
-Getting a list of vehicle models:
+#### Getting a list of vehicle models:
 
     {
         "models": [
@@ -132,7 +144,7 @@ Getting a list of vehicle models:
         ]
     }
 
-Creating an automobile:
+#### Creating an automobile:
 
     {
         "color": "red",
@@ -141,7 +153,7 @@ Creating an automobile:
         "model_id": 1
     }
 
-Getting the details of an automobile with its VIN:
+#### Getting the details of an automobile with its VIN:
 
     {
         "href": "/api/automobiles/1C3CC5FB2AN120174/",
@@ -162,14 +174,14 @@ Getting the details of an automobile with its VIN:
         }
     }
 
-Updating an automobile:
+#### Updating an automobile:
 
     {
         "color": "red",
         "year": 2012
     }
 
-Getting a list of automobiles:
+#### Getting a list of automobiles:
 
     {
         "autos": [
@@ -194,13 +206,16 @@ Getting a list of automobiles:
         ]
     }
 
+<br>
+
 ## Service Microservice CRUD Route Documentation
 CRUD information here
 
-## Sales Microservice CRUD Route Documentation
-CRUD Information here
+<br>
 
-Getting a List of Salespersons:
+## Sales Microservice CRUD Route Documentation
+
+#### Getting a List of Salespersons:
 
     {
 	"salesperson": [
@@ -222,20 +237,22 @@ Getting a List of Salespersons:
 	]
 }
 
-Getting and Updating Specific Salesperson:
+#### Getting and Updating Specific Salesperson:
+
     {
         "id": 3,
         "name": "Ross",
         "employee_number": "2"
     }
 
-Creating a Specific Salesperson:
+#### Creating a Specific Salesperson:
+
     {
         "name": "Adam",
         "employee_number": 4
     }
 
-Getting a List of Customers:
+#### Getting a List of Customers:
 
     {
         "customers": [
@@ -260,7 +277,7 @@ Getting a List of Customers:
         ]
     }
 
-Getting and Updating a Specific Customer:
+#### Getting and Updating a Specific Customer:
 
     {
         "id": 1,
@@ -269,7 +286,7 @@ Getting and Updating a Specific Customer:
         "phone_number": "4453267809"
     }
 
-Creating a Customer:
+#### Creating a Customer:
 
     {
     "name": "Bunny Corcoran",
@@ -277,7 +294,7 @@ Creating a Customer:
         "phone_number": "4453267921"
     }
 
-Getting a List of Sales Records:
+#### Getting a List of Sales Records:
 
     {
         "sales_records": [
@@ -341,7 +358,7 @@ Getting a List of Sales Records:
         ]
     }
 
-Getting a Specific Sales Record:
+#### Getting a Specific Sales Record:
 
     {
         "id": 1,
@@ -363,7 +380,7 @@ Getting a Specific Sales Record:
         }
     }
 
-Creating a New Sales Record:
+#### Creating a New Sales Record:
 
     {
         "price": "14000",
@@ -372,18 +389,24 @@ Creating a New Sales Record:
         "automobile": "/api/automobiles/1C3CC5FB2AN120177/"
     }
 
+<br>
+
 #####
 ## Design
-![](../../../Desktop/Screenshot%202023-03-08%20at%205.50.15%20PM.png)
+
 
 Sales Value Objects:
     -Imported the VIN from the Automobile model in the Inventory microservice
     -The poller also imported the href of the instance of the automobile object it was creating or updating
 
+<br>
+
 #####
 ## Service microservice
 Explain your models and integration with the inventory
 microservice, here.
+
+<br>
 
 #####
 ## Sales microservice
