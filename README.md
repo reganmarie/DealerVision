@@ -60,11 +60,13 @@ docker-compose up
 ## CRUD Route Documentation
 ## Inventory Microservice CRUD Route Documentation
 Create and Update a manufacturer:
+
     {
     "name": "Chrysler"
     }
 
 Creating, Getting, and Updating a single manufacturer:
+
     {
     "href": "/api/manufacturers/1/",
     "id": 1,
@@ -72,6 +74,7 @@ Creating, Getting, and Updating a single manufacturer:
     }
 
 Getting a list of manufacturers:
+
     {
         "manufacturers": [
         {
@@ -83,19 +86,22 @@ Getting a list of manufacturers:
     }
 
 Creating and updating a vehicle model:
-    {
+
+   {
         "name": "Sebring",
         "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
         "manufacturer_id": 1
     }
 
 Updating the vehicle model:
+
     {
         "name": "Sebring",
         "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg"
     }
 
 Getting the detail of, creating, or updating a vehicle model:
+
     {
         "href": "/api/models/1/",
         "id": 1,
@@ -109,6 +115,7 @@ Getting the detail of, creating, or updating a vehicle model:
     }
 
 Getting a list of vehicle models:
+
     {
         "models": [
             {
@@ -126,6 +133,7 @@ Getting a list of vehicle models:
     }
 
 Creating an automobile:
+
     {
         "color": "red",
         "year": 2012,
@@ -134,6 +142,7 @@ Creating an automobile:
     }
 
 Getting the details of an automobile with its VIN:
+
     {
         "href": "/api/automobiles/1C3CC5FB2AN120174/",
         "id": 1,
@@ -154,12 +163,14 @@ Getting the details of an automobile with its VIN:
     }
 
 Updating an automobile:
+
     {
         "color": "red",
         "year": 2012
     }
 
 Getting a list of automobiles:
+
     {
         "autos": [
             {
@@ -190,6 +201,7 @@ CRUD information here
 CRUD Information here
 
 Getting a List of Salespersons:
+
     {
 	"salesperson": [
 		{
@@ -224,6 +236,7 @@ Creating a Specific Salesperson:
     }
 
 Getting a List of Customers:
+
     {
         "customers": [
             {
@@ -257,6 +270,7 @@ Getting and Updating a Specific Customer:
     }
 
 Creating a Customer:
+
     {
     "name": "Bunny Corcoran",
     "address": "1355 Commons Dr, Hampden, VT",
@@ -264,6 +278,7 @@ Creating a Customer:
     }
 
 Getting a List of Sales Records:
+
     {
         "sales_records": [
             {
@@ -327,6 +342,7 @@ Getting a List of Sales Records:
     }
 
 Getting a Specific Sales Record:
+
     {
         "id": 1,
         "price": "9000",
@@ -348,6 +364,7 @@ Getting a Specific Sales Record:
     }
 
 Creating a New Sales Record:
+
     {
         "price": "14000",
         "salesperson": "George",
@@ -357,7 +374,7 @@ Creating a New Sales Record:
 
 #####
 ## Design
-
+![](../../../Desktop/Screenshot%202023-03-08%20at%205.50.15%20PM.png)
 
 Sales Value Objects:
     -Imported the VIN from the Automobile model in the Inventory microservice
