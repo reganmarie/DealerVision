@@ -22,6 +22,8 @@ function ListModels(props) {
 
   return (
     <>
+      <div>
+        <h1>Vehicle models</h1>
       <table className="table table-striped table-hover table-bordered">
         <thead>
           <tr>
@@ -44,6 +46,7 @@ function ListModels(props) {
           })}
         </tbody>
       </table>
+      </div>
     </>
   );
 }

@@ -167,7 +167,9 @@ Getting a list of automobiles:
     }
 
 ## Service Microservice CRUD Route Documentation
-CRUD information here
+In Insomnia, sending the reponses for the list views and detail views at port 8080 with urls tied to the urls.py
+Sending JSON body with information (VIN, manufacturer, or model) for the create and update.
+Response: getting an object with information that was sent as the JSON body.
 
 ## Sales Microservice CRUD Route Documentation
 CRUD Information here
@@ -178,11 +180,14 @@ Excalidraw here with Value Object identification
 
 #####
 ## Service microservice
-Explain your models and integration with the inventory
-microservice, here.
+Install Django app into Django project.
+Make models, views, and urls
+Use GET, POST, PUT, DELETE methods to test out in Insomnia
+Git push/pull/merge with main
+Use React for FrontEnd work
+
 
 #####
 ## Sales microservice
 Explain your models and integration with the inventory
 microservice, here.
-git

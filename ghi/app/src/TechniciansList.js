@@ -1,5 +1,7 @@
 function TechniciansList (props) {
     return (
+      <div>
+        <h1>Technicians</h1>
         <table className="table table-striped">
           <thead>
             <tr>
@@ -18,6 +20,7 @@ function TechniciansList (props) {
             })}
           </tbody>
         </table>
+        </div>
       );
 
 }

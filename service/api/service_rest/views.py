@@ -13,6 +13,10 @@ class TechnicianEncoder(ModelEncoder):
         "id",
     ]
 
+class AutoVODetailEncoder(ModelEncoder):
+    model = AutoVO
+    properties = ["import_href", "vin"]
+
 class ServiceListEncoder(ModelEncoder):
     model = Service
     properties = [
@@ -22,16 +26,16 @@ class ServiceListEncoder(ModelEncoder):
         "isVIP",
         "technician",
     ]
+    encoders = {
+        "auto": AutoVODetailEncoder(),
+        "technician": TechnicianEncoder(),
+    }
 
     def get_extra_data(self, o):
         return {
             "auto": o.auto.vin,
             "technician": o.technician.name,
         }
-
-class AutoVODetailEncoder(ModelEncoder):
-    model = AutoVO
-    properties = ["import_href", "vin"]
 
 class ServiceDetailEncoder(ModelEncoder):
     model = Service
@@ -51,35 +55,25 @@ class ServiceDetailEncoder(ModelEncoder):
 @require_http_methods(["GET", "POST"])
 def api_list_technicians(request):
     if request.method == "GET":
-        technicians = Technician.objects.order_by("name")
-
-        technician_list = []
-        for technician in technicians:
-            technician_dict = {
-                "name": technician.name,
-                "id": technician.id,
-            }
-            technician_list.append(technician_dict)
-        return JsonResponse({"technicians": technician_list})
+        technicians = Technician.objects.all()
+        return JsonResponse(
+            {"technicians": technicians},
+            encoder=TechnicianEncoder,
+        )
     else:
-        content = json.loads(request.body)
         try:
-            name = content["name"]
+            content = json.loads(request.body)
+            technician = Technician.objects.create(**content)
+            return JsonResponse(
+                technician,
+                encoder=TechnicianEncoder,
+                safe=False,
+            )
         except Technician.DoesNotExist:
             return JsonResponse(
                 {"Message": "invalid technician"},
                 status=400
             )
-
-        technician = Technician.objects.create(**content)
-        technician_dict = {
-            "name": technician.name,
-            "id": technician.id,
-        }
-        return JsonResponse(
-            technician_dict,
-            safe=False,
-        )
 
 
 @require_http_methods(["GET", "POST"])
@@ -115,6 +109,11 @@ def api_list_services(request, auto_vo_id=None):
                 {"Message": "invalid technician"},
                 status=400
             )
+
+        # if AutoVO.objects.filter(vin=content["vin"]).exists():
+        #     content["isVIP"] = True
+        # else:
+        #     content["isVIP"] = False
 
         service = Service.objects.create(**content)
         return JsonResponse(
