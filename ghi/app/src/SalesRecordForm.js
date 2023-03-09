@@ -28,7 +28,6 @@ function NewSalesRecordForm() {
     if (response.ok) {
       const data = await response.json();
       setRecords(data.sales_records);
-      console.log(data);
     }
   }
 
