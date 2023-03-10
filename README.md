@@ -544,6 +544,6 @@ Additionally, each model has RESTful API endpoints to create, read, update, and 
 
 To ensure that the sales microservice is always up-to-date with the inventory, a poller is used to periodically import the VIN numbers from the inventory microservice. A person cannot sell a car that is not listed in the inventory, nor can a person sell a car that has already been sold.
 
-The sales microservice also provides a user interface for adding salespersons, customers, and sales records. There is a list of all sales records with the ability to search for records by salesperson. This allows users to easily track the sales made by each salesperson.
+The sales microservice also provides a user interface for adding salespersons, customers, and sales records. The sales record feature does not allow a user to record a car as being sold twice. This feature is implemented with a drop-down menu that only shows the VIN numbers of cars that have not been previously sold. There is a list of all sales records with the ability to search for records by salesperson. This allows users to easily track the sales made by each salesperson.
 
 Overall, the sales microservice is an important component of a larger system for managing an automobile dealership. By integrating with the inventory microservice and providing a user-friendly interface for tracking sales, the sales microservice helps ensure that the sales process is efficient and accurate.
