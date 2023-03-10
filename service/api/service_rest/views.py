@@ -25,6 +25,7 @@ class ServiceListEncoder(ModelEncoder):
         "reason",
         "isVIP",
         "technician",
+        "status",
     ]
     encoders = {
         "auto": AutoVODetailEncoder(),
@@ -46,6 +47,7 @@ class ServiceDetailEncoder(ModelEncoder):
         "isVIP",
         "auto",
         "technician",
+        "status",
     ]
     encoders = {
         "auto": AutoVODetailEncoder(),
@@ -81,10 +83,12 @@ def api_list_services(request, auto_vo_id=None):
     if request.method == "GET":
         if auto_vo_id is not None:
             services = Service.objects.filter(auto=auto_vo_id)
+            isVIP = True if services else False
         else:
             services = Service.objects.all()
+            isVIP = False
         return JsonResponse(
-            {"services": services},
+            {"services": services, "isVIP": isVIP},
             encoder=ServiceDetailEncoder,
         )
     else:
@@ -109,11 +113,6 @@ def api_list_services(request, auto_vo_id=None):
                 {"Message": "invalid technician"},
                 status=400
             )
-
-        # if AutoVO.objects.filter(vin=content["vin"]).exists():
-        #     content["isVIP"] = True
-        # else:
-        #     content["isVIP"] = False
 
         service = Service.objects.create(**content)
         return JsonResponse(
@@ -144,16 +143,17 @@ def api_show_service(request, id):
         content = json.loads(request.body)
         try:
             service = Service.objects.get(id=id)
+            service.finish_service()
         except Service.DoesNotExist:
             return JsonResponse(
-                {"message": "invalid sesrvice id"},
+                {"message": "invalid service id"},
                 status=400,
             )
 
         Service.objects.filter(id=id).update(**content)
         service = Service.objects.get(id=id)
         return JsonResponse(
-            service,
+            {"service": service},
             encoder=ServiceDetailEncoder,
             safe=False,
         )
