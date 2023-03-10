@@ -6,8 +6,8 @@ Team:
 
 ######
 ## To Run:
-docker volume create beta-data
-docker-compose build
+    docker volume create beta-data
+        docker-compose build
 docker-compose up
 
 ######
@@ -18,7 +18,7 @@ docker-compose up
 
     Main Page: http://localhost:3000/
 
-    **Inventory**
+ **Inventory**
     List manufacturers: http://localhost:3000/manufacturers
     Create a new manufacturer: http://localhost:3000/manufacturers/new
     List models: http://localhost:3000/models
@@ -26,13 +26,13 @@ docker-compose up
     List automobiles: http://localhost:3000/automobiles
     Create a new automobile: http://localhost:3000/automobiles/new
 
-    **Services**
+**Services**
     List technicians: http://localhost:3000/technicians
     New technician: http://localhost:3000/technicians/new
     Service history: http://localhost:3000/services/history
     New service: http://localhost:3000/services/new
 
-    **Sales**
+**Sales**
     New salesperson: http://localhost:3000/salesperson/new
     New customer: http://localhost:3000/customer/new
     New sales record: http://localhost:3000/salesrecords/new
@@ -107,8 +107,8 @@ docker-compose up
 
 #### Create a manufacturer:
 **URL**
-http://localhost:8100/api/manufacturers/
-Creating a manufacturer only requires a name. An id is automatically created.
+    http://localhost:8100/api/manufacturers/
+    Creating a manufacturer only requires a name. An id is automatically created.
 
     {
     "name": "Chrysler"
@@ -116,10 +116,10 @@ Creating a manufacturer only requires a name. An id is automatically created.
 
 #### Creating, Getting, and Updating a single manufacturer:
 **URL**
-http://localhost:8100/api/manufacturers/:id/
+    http://localhost:8100/api/manufacturers/:id/
 
-Updating a single manufacturer only requires a name.
-The id cannot be altered.
+    Updating a single manufacturer only requires a name.
+    The id cannot be altered.
 
    {
     "href": "/api/manufacturers/1/",
@@ -129,8 +129,8 @@ The id cannot be altered.
 
 #### Getting a list of manufacturers:
 **URL**
-http://localhost:8100/api/manufacturers/
-The list of manufacturers is a dictionary with the key "manufacturers" set to a list of manufacturers.
+    http://localhost:8100/api/manufacturers/
+    The list of manufacturers is a dictionary with the key "manufacturers" set to a list of manufacturers.
 
     {
         "manufacturers": [
@@ -144,8 +144,9 @@ The list of manufacturers is a dictionary with the key "manufacturers" set to a 
 
 #### Creating a vehicle model:
 **URL**
-http://localhost:8100/api/models/
-Creating a vehicle model requires the model name, a URL of an image, and the id of the manufacturer.
+    http://localhost:8100/api/models/
+    Creating a vehicle model requires the model name, a URL of an image, and the id of the manufacturer.
+
    {
         "name": "Sebring",
         "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
@@ -155,7 +156,7 @@ Creating a vehicle model requires the model name, a URL of an image, and the id 
 #### Updating the vehicle model:
 **URL**
 	http://localhost:8100/api/models/:id/
-Updating a vehicle model can take the name and/or the picture URL.
+    Updating a vehicle model can take the name and/or the picture URL.
 
     {
         "name": "Sebring",
@@ -163,6 +164,9 @@ Updating a vehicle model can take the name and/or the picture URL.
     }
 
 #### Getting the detail of, creating, or updating a vehicle model:
+**URL**
+    	http://localhost:8100/api/models/:id/
+        Getting the detail of a vehicle model, or the return value from creating or updating a vehicle model, returns the model's information and the manufacturer's information.
 
     {
         "href": "/api/models/1/",
@@ -178,8 +182,8 @@ Updating a vehicle model can take the name and/or the picture URL.
 
 #### Getting a list of vehicle models:
 **URL**
-http://localhost:8100/api/models/
-Getting the detail of a vehicle model, or the return value from creating or updating a vehicle model, returns the model's information and the manufacturer's information.
+    http://localhost:8100/api/models/
+    Getting the detail of a vehicle model, or the return value from creating or updating a vehicle model, returns the model's information and the manufacturer's information.
 
     {
         "models": [
@@ -199,8 +203,8 @@ Getting the detail of a vehicle model, or the return value from creating or upda
 
 #### Creating an automobile:
 **URL**
-http://localhost:8100/api/automobiles/
-You can create an automobile with its color, year, VIN, and the id of the vehicle model.
+    http://localhost:8100/api/automobiles/
+    You can create an automobile with its color, year, VIN, and the id of the vehicle model.
 
 
     {
@@ -212,8 +216,8 @@ You can create an automobile with its color, year, VIN, and the id of the vehicl
 
 #### Getting the details of an automobile with its VIN:
 **URL**
-http://localhost:8100/api/automobiles/:vin/
-The details for an automobile include its model and manufacturer.
+    http://localhost:8100/api/automobiles/:vin/
+    The details for an automobile include its model and manufacturer.
 
     {
         "href": "/api/automobiles/1C3CC5FB2AN120174/",
@@ -236,8 +240,8 @@ The details for an automobile include its model and manufacturer.
 
 #### Updating an automobile:
 **URL**
-http://localhost:8100/api/automobiles/:vin/
-You can update the color and/or year of an automobile.
+    http://localhost:8100/api/automobiles/:vin/
+    You can update the color and/or year of an automobile.
 
     {
         "color": "red",
@@ -246,8 +250,8 @@ You can update the color and/or year of an automobile.
 
 #### Getting a list of automobiles:
 **URL**
-http://localhost:8100/api/automobiles/
-Getting a list of automobiles returns a dictionary with the key "autos" set to a list of automobile information.
+    http://localhost:8100/api/automobiles/
+        Getting a list of automobiles returns a dictionary with the key "autos" set to a list of automobile information.
 
     {
         "autos": [
@@ -285,8 +289,8 @@ Response: getting an object with information that was sent as the JSON body.
 
 #### Getting a List of Salespersons:
 **URL**
-http://localhost:8090/api/salesperson/
-The list of salespersons is a dictionary with the key "salesperson" set to a list of salespersons.
+    http://localhost:8090/api/salesperson/
+    The list of salespersons is a dictionary with the key "salesperson" set to a list of salespersons.
 
     {
 	"salesperson": [
@@ -310,11 +314,11 @@ The list of salespersons is a dictionary with the key "salesperson" set to a lis
 
 #### Getting, Updating, or Deleting Specific Salesperson:
 **URL:**
-http://localhost:8090/api/salesperson/:id/
-To update a specific salesperson, you only need their name or employee number.
-You cannot update their id.
-To delete a specific salesperson, put the URL into insomnia with a delete method,
-and no information is required.
+    http://localhost:8090/api/salesperson/:id/
+    To update a specific salesperson, you only need their name or employee number.
+    You cannot update their id.
+    To delete a specific salesperson, put the URL into insomnia with a delete method,
+    and no information is required.
 
     {
         "id": 3,
@@ -324,9 +328,9 @@ and no information is required.
 
 #### Creating a Specific Salesperson:
 **URL:**
-http://localhost:8090/api/salesperson/
-To create a specific salesperson, you need a name and employee number.
-The id is automatically assigned and cannot be altered.
+    http://localhost:8090/api/salesperson/
+    To create a specific salesperson, you need a name and employee number.
+    The id is automatically assigned and cannot be altered.
 
     {
         "name": "Adam",
@@ -335,8 +339,8 @@ The id is automatically assigned and cannot be altered.
 
 #### Getting a List of Customers:
 **URL**
-http://localhost:8090/api/customers/
-The list of customers is a dictionary with the key "customers" set to a list of customers.
+    http://localhost:8090/api/customers/
+    The list of customers is a dictionary with the key "customers" set to a list of customers.
 
     {
         "customers": [
@@ -363,11 +367,11 @@ The list of customers is a dictionary with the key "customers" set to a list of 
 
 #### Getting, Updating, or Deleting a Specific Customer:
 **URL**
-http://localhost:8090/api/customers/:id/
-To update a specific customer, you only need name, address, or phone number.
-You cannot change the ID.
-To delete a specific customer, put the URL into insomnia with a delete method,
-and no information is required.
+    http://localhost:8090/api/customers/:id/
+    To update a specific customer, you only need name, address, or phone number.
+    You cannot change the ID.
+    To delete a specific customer, put the URL into insomnia with a delete method,
+    and no information is required.
 
     {
         "id": 1,
@@ -378,9 +382,9 @@ and no information is required.
 
 #### Creating a Customer:
 **URL**
-http://localhost:8090/api/customers/
-To create a customer, you need a name, address, and phone number.
-The id is automatically assigned and cannot be altered.
+    http://localhost:8090/api/customers/
+    To create a customer, you need a name, address, and phone number.
+    The id is automatically assigned and cannot be altered.
 
     {
     "name": "Bunny Corcoran",
@@ -390,8 +394,8 @@ The id is automatically assigned and cannot be altered.
 
 #### Getting a List of Sales Records:
 **URL**
-http://localhost:8090/api/salesrecords/
-The list of sales records is a dictionary with the key "sales_records" set to a list of sales records.
+    http://localhost:8090/api/salesrecords/
+    The list of sales records is a dictionary with the key "sales_records" set to a list of sales records.
 
     {
         "sales_records": [
@@ -457,8 +461,8 @@ The list of sales records is a dictionary with the key "sales_records" set to a 
 
 #### Getting a Specific Sales Record:
 **URL**
-http://localhost:8090/api/salesrecords/:id/
-Getting the detail of a sales record, or the return value from creating a sales record, returns the customer's information and the sales persons's information.
+    http://localhost:8090/api/salesrecords/:id/
+    Getting the detail of a sales record, or the return value from creating a sales record, returns the customer's information and the sales persons's information.
 
     {
         "id": 1,
@@ -504,8 +508,6 @@ is required.
 
 #####
 ## Design
-
-![ProjectBetaDiagram](https://images.pexels.com/photos/15862616/pexels-photo-15862616.png)
 
 ![ProjectBetaDiagram](https://live.staticflickr.com/65535/52739099331_fc6f929802_k.jpg)
 
