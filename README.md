@@ -17,16 +17,22 @@ docker-compose up
     Port 3000, takes about 2-3 minutes to load from typing 'Docker Compose Up'
 
     Main Page: http://localhost:3000/
+
+    **Inventory**
     List manufacturers: http://localhost:3000/manufacturers
     Create a new manufacturer: http://localhost:3000/manufacturers/new
     List models: http://localhost:3000/models
     Create models: http://localhost:3000/models/new
     List automobiles: http://localhost:3000/automobiles
     Create a new automobile: http://localhost:3000/automobiles/new
+
+    **Services**
     List technicians: http://localhost:3000/technicians
     New technician: http://localhost:3000/technicians/new
     Service history: http://localhost:3000/services/history
     New service: http://localhost:3000/services/new
+
+    **Sales**
     New salesperson: http://localhost:3000/salesperson/new
     New customer: http://localhost:3000/customer/new
     New sales record: http://localhost:3000/salesrecords/new
@@ -99,13 +105,21 @@ docker-compose up
 
 <br>
 
-#### Create and Update a manufacturer:
+#### Create a manufacturer:
+**URL**
+http://localhost:8100/api/manufacturers/
+Creating a manufacturer only requires a name. An id is automatically created.
 
     {
     "name": "Chrysler"
     }
 
 #### Creating, Getting, and Updating a single manufacturer:
+**URL**
+http://localhost:8100/api/manufacturers/:id/
+
+Updating a single manufacturer only requires a name.
+The id cannot be altered.
 
    {
     "href": "/api/manufacturers/1/",
@@ -114,6 +128,9 @@ docker-compose up
     }
 
 #### Getting a list of manufacturers:
+**URL**
+http://localhost:8100/api/manufacturers/
+The list of manufacturers is a dictionary with the key "manufacturers" set to a list of manufacturers.
 
     {
         "manufacturers": [
@@ -125,8 +142,10 @@ docker-compose up
         ]
     }
 
-#### Creating and updating a vehicle model:
-
+#### Creating a vehicle model:
+**URL**
+http://localhost:8100/api/models/
+Creating a vehicle model requires the model name, a URL of an image, and the id of the manufacturer.
    {
         "name": "Sebring",
         "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
@@ -134,6 +153,9 @@ docker-compose up
     }
 
 #### Updating the vehicle model:
+**URL**
+	http://localhost:8100/api/models/:id/
+Updating a vehicle model can take the name and/or the picture URL.
 
     {
         "name": "Sebring",
@@ -155,6 +177,9 @@ docker-compose up
     }
 
 #### Getting a list of vehicle models:
+**URL**
+http://localhost:8100/api/models/
+Getting the detail of a vehicle model, or the return value from creating or updating a vehicle model, returns the model's information and the manufacturer's information.
 
     {
         "models": [
@@ -173,6 +198,10 @@ docker-compose up
     }
 
 #### Creating an automobile:
+**URL**
+http://localhost:8100/api/automobiles/
+You can create an automobile with its color, year, VIN, and the id of the vehicle model.
+
 
     {
         "color": "red",
@@ -182,6 +211,9 @@ docker-compose up
     }
 
 #### Getting the details of an automobile with its VIN:
+**URL**
+http://localhost:8100/api/automobiles/:vin/
+The details for an automobile include its model and manufacturer.
 
     {
         "href": "/api/automobiles/1C3CC5FB2AN120174/",
@@ -203,6 +235,9 @@ docker-compose up
     }
 
 #### Updating an automobile:
+**URL**
+http://localhost:8100/api/automobiles/:vin/
+You can update the color and/or year of an automobile.
 
     {
         "color": "red",
@@ -210,6 +245,9 @@ docker-compose up
     }
 
 #### Getting a list of automobiles:
+**URL**
+http://localhost:8100/api/automobiles/
+Getting a list of automobiles returns a dictionary with the key "autos" set to a list of automobile information.
 
     {
         "autos": [
@@ -246,6 +284,9 @@ Response: getting an object with information that was sent as the JSON body.
 ## Sales Microservice CRUD Route Documentation
 
 #### Getting a List of Salespersons:
+**URL**
+http://localhost:8090/api/salesperson/
+The list of salespersons is a dictionary with the key "salesperson" set to a list of salespersons.
 
     {
 	"salesperson": [
@@ -267,7 +308,13 @@ Response: getting an object with information that was sent as the JSON body.
 	]
 }
 
-#### Getting and Updating Specific Salesperson:
+#### Getting, Updating, or Deleting Specific Salesperson:
+**URL:**
+http://localhost:8090/api/salesperson/:id/
+To update a specific salesperson, you only need their name or employee number.
+You cannot update their id.
+To delete a specific salesperson, put the URL into insomnia with a delete method,
+and no information is required.
 
     {
         "id": 3,
@@ -276,6 +323,10 @@ Response: getting an object with information that was sent as the JSON body.
     }
 
 #### Creating a Specific Salesperson:
+**URL:**
+http://localhost:8090/api/salesperson/
+To create a specific salesperson, you need a name and employee number.
+The id is automatically assigned and cannot be altered.
 
     {
         "name": "Adam",
@@ -283,6 +334,9 @@ Response: getting an object with information that was sent as the JSON body.
     }
 
 #### Getting a List of Customers:
+**URL**
+http://localhost:8090/api/customers/
+The list of customers is a dictionary with the key "customers" set to a list of customers.
 
     {
         "customers": [
@@ -307,7 +361,13 @@ Response: getting an object with information that was sent as the JSON body.
         ]
     }
 
-#### Getting and Updating a Specific Customer:
+#### Getting, Updating, or Deleting a Specific Customer:
+**URL**
+http://localhost:8090/api/customers/:id/
+To update a specific customer, you only need name, address, or phone number.
+You cannot change the ID.
+To delete a specific customer, put the URL into insomnia with a delete method,
+and no information is required.
 
     {
         "id": 1,
@@ -317,14 +377,21 @@ Response: getting an object with information that was sent as the JSON body.
     }
 
 #### Creating a Customer:
+**URL**
+http://localhost:8090/api/customers/
+To create a customer, you need a name, address, and phone number.
+The id is automatically assigned and cannot be altered.
 
     {
     "name": "Bunny Corcoran",
     "address": "1355 Commons Dr, Hampden, VT",
-        "phone_number": "4453267921"
+    "phone_number": "4453267921"
     }
 
 #### Getting a List of Sales Records:
+**URL**
+http://localhost:8090/api/salesrecords/
+The list of sales records is a dictionary with the key "sales_records" set to a list of sales records.
 
     {
         "sales_records": [
@@ -389,6 +456,9 @@ Response: getting an object with information that was sent as the JSON body.
     }
 
 #### Getting a Specific Sales Record:
+**URL**
+http://localhost:8090/api/salesrecords/:id/
+Getting the detail of a sales record, or the return value from creating a sales record, returns the customer's information and the sales persons's information.
 
     {
         "id": 1,
@@ -410,7 +480,18 @@ Response: getting an object with information that was sent as the JSON body.
         }
     }
 
-#### Creating a New Sales Record:
+#### Creating or Deleting a New Sales Record:
+**URL**
+http://localhost:8090/api/salesrecords/:id/
+To create a new sales record, you need a price, salesperson's name, customer's ID,
+and automobile href. The href is to correctly identify the automobile across microservices
+since the automobile VIN is a VO objected imported by the poller from another microservice.
+You can verify that the poller is working through creating a new entry here, or the form on
+the React front-end.
+An id is automatically assigned and cannot be altered.
+
+To delete a sales record, put the URL into Insomnia using a 'DELETE' method, and no information
+is required.
 
     {
         "price": "14000",
@@ -425,6 +506,8 @@ Response: getting an object with information that was sent as the JSON body.
 ## Design
 
 ![ProjectBetaDiagram](https://images.pexels.com/photos/15862616/pexels-photo-15862616.png)
+
+![ProjectBetaDiagram](https://live.staticflickr.com/65535/52739099331_fc6f929802_k.jpg)
 
 Service Value Objects
     -Imported the VIN from the Automobile model in the Inventory microservice to associate a service appointment with a vehicle that was sold from the dealership so the conceierge can give the owner VIP treatment.
@@ -450,7 +533,11 @@ Use React for FrontEnd work
 #####
 ## Sales microservice
 
-The sales microservice has three models: SalesPerson, Customer, and SalesRecord. The SalesRecord model has foreign keys for the SalesPerson model, the Customer Model, and the AutomobileVO object. Therefore, when a sales record is created, it is associated with a salesperson, a customer, and a specific automobile that is identified by its VIN number. Additionally, each model has RESTful API endpoints to create, read, update, and delete data.
+The sales microservice has three models: SalesPerson, Customer, and SalesRecord. The Customer model has name, address, and phone number fields to record the contact information for existing or potential customers. This is important so prospective leads can be followed up with and existing customers can be logged for potential further promotions. The SalesPerson model has name and employee number fields to record information about new or exisiting sales employees so each sales person's sales records can be tracked.
+
+The SalesRecord model has foreign keys for the SalesPerson model, the Customer Model, and the AutomobileVO object. Therefore, when a sales record is created, it is associated with a salesperson, a customer, and a specific automobile that is identified by its VIN number. The SalesRecord model also includes price to record the price of the sale.
+
+Additionally, each model has RESTful API endpoints to create, read, update, and delete data.
 
 To ensure that the sales microservice is always up-to-date with the inventory, a poller is used to periodically import the VIN numbers from the inventory microservice. A person cannot sell a car that is not listed in the inventory, nor can a person sell a car that has already been sold.
 
