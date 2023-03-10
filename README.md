@@ -12,6 +12,27 @@ docker-compose up
 
 ######
 ## URLs and Ports
+
+### Front End URLs
+    Port 3000, takes about 2-3 minutes to load from typing 'Docker Compose Up'
+
+    Main Page: http://localhost:3000/
+    List manufacturers: http://localhost:3000/manufacturers
+    Create a new manufacturer: http://localhost:3000/manufacturers/new
+    List models: http://localhost:3000/models
+    Create models: http://localhost:3000/models/new
+    List automobiles: http://localhost:3000/automobiles
+    Create a new automobile: http://localhost:3000/automobiles/new
+    List technicians: http://localhost:3000/technicians
+    New technician: http://localhost:3000/technicians/new
+    Service history: http://localhost:3000/services/history
+    New service: http://localhost:3000/services/new
+    New salesperson: http://localhost:3000/salesperson/new
+    New customer: http://localhost:3000/customer/new
+    New sales record: http://localhost:3000/salesrecords/new
+    Searchable sales record history: http://localhost:3000/salesrecords
+
+
 ### Inventory:
     Port 8100 for Insomnia
     Port 3000 for React Front End
@@ -406,12 +427,12 @@ Response: getting an object with information that was sent as the JSON body.
 ![ProjectBetaDiagram](https://images.pexels.com/photos/15862616/pexels-photo-15862616.png)
 
 Service Value Objects
-    -Imported the VIN from the Automobile model in the Inventory microservice
-    -The poller also imported the href of the instance of the automobile object it was creating or updating
+    -Imported the VIN from the Automobile model in the Inventory microservice to associate a service appointment with a vehicle that was sold from the dealership so the conceierge can give the owner VIP treatment.
+    -The poller also imported the href of the instance of the automobile object it was creating or updating so specific automobiles could be identified accurately across the microservices.
 
 Sales Value Objects:
-    -Imported the VIN from the Automobile model in the Inventory microservice
-    -The poller also imported the href of the instance of the automobile object it was creating or updating
+    -Imported the VIN from the Automobile model in the Inventory microservice so a sales record could be created once a vehicle from the dealership was sold.
+    -The poller also imported the href of the instance of the automobile object it was creating or updating so specific automobiles could be identified accurately across the microservices.
 
 <br>
 
@@ -429,7 +450,7 @@ Use React for FrontEnd work
 #####
 ## Sales microservice
 
-The sales microservice has three models: SalesPerson, Customer, and SalesRecord. The SalesRecord model has foreign keys for the SalesPerson model, the Customer Model, and the AutomobileVO object. Therefore, when a sales record is created, it is associated with a salesperson, a customer, and a specific automobile that is identified by its VIN number.
+The sales microservice has three models: SalesPerson, Customer, and SalesRecord. The SalesRecord model has foreign keys for the SalesPerson model, the Customer Model, and the AutomobileVO object. Therefore, when a sales record is created, it is associated with a salesperson, a customer, and a specific automobile that is identified by its VIN number. Additionally, each model has RESTful API endpoints to create, read, update, and delete data.
 
 To ensure that the sales microservice is always up-to-date with the inventory, a poller is used to periodically import the VIN numbers from the inventory microservice. A person cannot sell a car that is not listed in the inventory, nor can a person sell a car that has already been sold.
 
