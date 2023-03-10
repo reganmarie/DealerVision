@@ -7,8 +7,8 @@ Team:
 ######
 ## To Run:
     docker volume create beta-data
-        docker-compose build
-docker-compose up
+    docker-compose build
+    docker-compose up
 
 ######
 ## URLs and Ports
@@ -19,6 +19,7 @@ docker-compose up
     Main Page: http://localhost:3000/
 
  **Inventory**
+
     List manufacturers: http://localhost:3000/manufacturers
     Create a new manufacturer: http://localhost:3000/manufacturers/new
     List models: http://localhost:3000/models
@@ -27,12 +28,14 @@ docker-compose up
     Create a new automobile: http://localhost:3000/automobiles/new
 
 **Services**
+
     List technicians: http://localhost:3000/technicians
     New technician: http://localhost:3000/technicians/new
     Service history: http://localhost:3000/services/history
     New service: http://localhost:3000/services/new
 
 **Sales**
+
     New salesperson: http://localhost:3000/salesperson/new
     New customer: http://localhost:3000/customer/new
     New sales record: http://localhost:3000/salesrecords/new
@@ -117,7 +120,6 @@ docker-compose up
 #### Creating, Getting, and Updating a single manufacturer:
 **URL**
     http://localhost:8100/api/manufacturers/:id/
-
     Updating a single manufacturer only requires a name.
     The id cannot be altered.
 
@@ -205,7 +207,6 @@ docker-compose up
 **URL**
     http://localhost:8100/api/automobiles/
     You can create an automobile with its color, year, VIN, and the id of the vehicle model.
-
 
     {
         "color": "red",
