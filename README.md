@@ -40,6 +40,15 @@ docker-compose up
     Port 8080 for Insomnia
     Port 3000 for React Front End
 
+    List technicians (GET): http://localhost:8080/api/technicians/
+    Create a technician (POST): http://localhost:8080/api/technicians/
+
+    List services (GET): http://localhost:8080/api/services/
+    Get a specific service (GET):http://localhost:8080/api/service/:vin/
+    Create a service (POST): http://localhost:8080/api/services/
+    Update a specific service (PUT): http://localhost:8080/api/services/:vin/
+    Delete a specific service (DELETE): http://localhost:8080/api/services/:vin/
+
 <br>
 
 ### Sales:
