@@ -14,50 +14,51 @@ function Nav() {
               <NavLink className="nav-link" aria-current="page" to="/">Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/services">Services</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" id="new-service" to="/services/new">New service</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" id="history" to="/services/history">Service History</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/technicians">Technicians</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" id="new-technician" to="/technicians/new">New technician</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" id="models" to="/models">Models</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" id="new-model" to="/models/new">New Model</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" id="automobiles" to="/automobiles">Automobiles</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" id="new-automobile" to="/automobiles/new">New Automobile</NavLink>
+              <NavLink className="nav-link" aria-current="page" id="new-manufacturer" to="/manufacturers/new">New Manufacturer</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" aria-current="page" id="manufacturer" to="/manufacturers">Manufacturers</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" id="new-manufacturer" to="/manufacturers/new">New Manufacturer</NavLink>
+              <NavLink className="nav-link" aria-current="page" id="new-model" to="/models/new">New Model</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" id="new-salesperson" to="/salesperson/new">New Salesperson</NavLink>
+              <NavLink className="nav-link" aria-current="page" id="models" to="/models">Models</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" aria-current="page" id="new-automobile" to="/automobiles/new">New Automobile</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" aria-current="page" id="automobiles" to="/automobiles">Automobiles</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" aria-current="page" id="new-technician" to="/technicians/new">New technician</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/technicians">Technicians</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" aria-current="page" id="new-service" to="/services/new">New service</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/services">Services</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" aria-current="page" id="history" to="/services/history">Service History</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" aria-current="page" id="new-customer" to="/customer/new">New Customer</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" id="salesrecords" to="/salesrecords">Sales Record History, Searchable</NavLink>
+              <NavLink className="nav-link" aria-current="page" id="new-salesperson" to="/salesperson/new">New Salesperson</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" aria-current="page" id="new-salesrecord" to="/salesrecords/new">New Sales Record</NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" aria-current="page" id="salesrecords" to="/salesrecords">Sales Record History, Searchable</NavLink>
+            </li>
+
           </ul>
         </div>
       </div>

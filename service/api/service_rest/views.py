@@ -54,6 +54,11 @@ class ServiceDetailEncoder(ModelEncoder):
         "technician": TechnicianEncoder(),
     }
 
+    def get_extra_data(self, o):
+        count = AutoVO.objects.filter(vin=o.auto.vin).count()
+        is_vip = count > 0
+        return {"isVIP": is_vip}
+
 @require_http_methods(["GET", "POST"])
 def api_list_technicians(request):
     if request.method == "GET":
@@ -83,26 +88,14 @@ def api_list_services(request, auto_vo_id=None):
     if request.method == "GET":
         if auto_vo_id is not None:
             services = Service.objects.filter(auto=auto_vo_id)
-            isVIP = True if services else False
         else:
             services = Service.objects.all()
-            isVIP = False
         return JsonResponse(
-            {"services": services, "isVIP": isVIP},
+            {"services": services},
             encoder=ServiceDetailEncoder,
         )
     else:
         content = json.loads(request.body)
-
-        try:
-            auto_href = content["auto"]
-            auto = AutoVO.objects.get(import_href=auto_href)
-            content['auto'] = auto
-        except AutoVO.DoesNotExist:
-            return JsonResponse(
-                {"Message": "invalid auto"},
-                status=400
-            )
 
         try:
             technician_name = content["technician"]
@@ -111,6 +104,16 @@ def api_list_services(request, auto_vo_id=None):
         except Technician.DoesNotExist:
             return JsonResponse(
                 {"Message": "invalid technician"},
+                status=400
+            )
+
+        try:
+            auto_href = content["auto"]
+            auto = AutoVO.objects.get(import_href=auto_href)
+            content['auto'] = auto
+        except AutoVO.DoesNotExist:
+            return JsonResponse(
+                {"Message": "invalid auto"},
                 status=400
             )
 

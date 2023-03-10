@@ -78,7 +78,7 @@ function ServicesList(props) {
                                 <td>
                                     <button type="button" className="btn btn-danger" onClick={() => cancelService(service)}>Cancel</button>
                                 </td>
-                                <td>{ service.isVIP ? "yes" : "no" }</td>
+                                <td>{ service.isVIP ? 'VIP' : 'No' }</td>
                             </tr>
                         )
                     })}
