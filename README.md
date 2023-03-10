@@ -65,10 +65,10 @@ docker-compose up
     Create a technician (POST): http://localhost:8080/api/technicians/
 
     List services (GET): http://localhost:8080/api/services/
-    Get a specific service (GET):http://localhost:8080/api/service/:vin/
+    Get a specific service (GET):http://localhost:8080/api/service/:id/
     Create a service (POST): http://localhost:8080/api/services/
-    Update a specific service (PUT): http://localhost:8080/api/services/:vin/
-    Delete a specific service (DELETE): http://localhost:8080/api/services/:vin/
+    Update a specific service (PUT): http://localhost:8080/api/services/:id/
+    Delete a specific service (DELETE): http://localhost:8080/api/services/:id/
 
 <br>
 
