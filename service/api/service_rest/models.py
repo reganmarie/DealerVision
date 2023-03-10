@@ -22,6 +22,7 @@ class Service(models.Model):
     reason = models.CharField(max_length=200)
     isVIP = models.BooleanField(default=False)
     finish = models.BooleanField(default=False)
+    status = models.CharField(max_length=20, default='Pending')
 
     technician = models.ForeignKey (
         Technician,
@@ -40,7 +41,7 @@ class Service(models.Model):
     def __str__(self):
         return self.owner_name
 
-    def finish(self):
+    def finish_service(self):
         self.finish = True
         self.save()
 

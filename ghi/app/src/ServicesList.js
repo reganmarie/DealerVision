@@ -18,38 +18,31 @@ function ServicesList(props) {
         fetchData();
     }, []);
 
-    const finishService = async (id) => {
-        const serviceDetailUrl = `http://localhost:8080/api/services/${id}/`
-        const fetchConfig = {
-            method: "put",
-            body: JSON.stringify({"finish": true}),
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        }
 
-        const response = await fetch(serviceDetailUrl, fetchConfig)
-        if (response.ok) {
-            const index = services.findIndex((service) => service.id === id);
-            const updatedServices = [...services];
-            updatedServices[index] = {...updatedServices[index], finish:true};
-            setServices(updatedServices);
+    async function finishService(service) {
+        const finishUrl = `http://localhost:8080${service.href}`;
+        const finishResponse = await fetch(finishUrl,
+            { method: 'put',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ finish: true })
+        });
+        if (finishResponse.ok) {
+            const copyServices = [...services];
+            const filteredServices = copyServices.filter(s => s.href !== service.href);
+            setServices(filteredServices);
         }
     }
 
-    const cancelService = async (id) => {
-        const serviceDetailUrl = `http://localhost:8080/api/services/${id}/`
-        const fetchConfig = {
-            method: "delete",
-            body: JSON.stringify(id),
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        }
+    async function cancelService(service) {
 
-        const response = await fetch(serviceDetailUrl, fetchConfig)
-        if (response.ok) {
-            fetchData();
+        const cancelUrl = `http://localhost:8080${service.href}`
+
+        const cancelResponse = await fetch (cancelUrl, {method: 'delete'})
+        if (cancelResponse.ok) {
+            const copyServices = [...services];
+            const filteredServices = copyServices.filter(s => s.href !== service.href);
+            setServices(filteredServices);
+            window.location.reload()
         }
     }
 
@@ -70,7 +63,7 @@ function ServicesList(props) {
                 </tr>
             </thead>
             <tbody>
-                {props.services.map(service => {
+                {services.map(service => {
                     return (
                         <tr key={service.href}>
                             <td>{ service.auto.vin }</td>
@@ -84,7 +77,7 @@ function ServicesList(props) {
                             <td>
                                 <button type="button" className="btn btn-danger" onClick={() => cancelService(service)}>Cancel</button>
                             </td>
-                            <td>{ service.isVip ? "yes" : "no" }</td>
+                            <td>{ service.isVIP ? "yes" : "no" }</td>
                         </tr>
                     )
                 })}
