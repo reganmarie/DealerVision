@@ -512,11 +512,11 @@ is required.
 
 ![ProjectBetaDiagram](https://live.staticflickr.com/65535/52739099331_fc6f929802_k.jpg)
 
-Service Value Objects
+#### Service Value Objects
     -Imported the VIN from the Automobile model in the Inventory microservice to associate a service appointment with a vehicle that was sold from the dealership so the conceierge can give the owner VIP treatment.
     -The poller also imported the href of the instance of the automobile object it was creating or updating so specific automobiles could be identified accurately across the microservices.
 
-Sales Value Objects:
+#### Sales Value Objects:
     -Imported the VIN from the Automobile model in the Inventory microservice so a sales record could be created once a vehicle from the dealership was sold.
     -The poller also imported the href of the instance of the automobile object it was creating or updating so specific automobiles could be identified accurately across the microservices.
 
