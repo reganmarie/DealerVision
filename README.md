@@ -5,9 +5,9 @@ Team:
 * Person 2 - Regan Tewksbury: Sales microservice
 
 ######
-## Video of Application:
+## Video Walkthrough of Application:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/n8QWtzwAERY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[DealerVision Vido Walkthrough](https://youtu.be/n8QWtzwAERY)
 
 ######
 ## To Run:
