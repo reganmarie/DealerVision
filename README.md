@@ -5,6 +5,11 @@ Team:
 * Person 2 - Regan Tewksbury: Sales microservice
 
 ######
+## Video of Application:
+
+![DealerVision Video](https://youtu.be/n8QWtzwAERY)
+
+######
 ## To Run:
     docker volume create beta-data
     docker-compose build
