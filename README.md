@@ -1,7 +1,7 @@
 
 Team:
 
-* Person 1 - Jackie Liu service microservice
+* Person 1 - Jackie Liu Service Microservice
 * Person 2 - Regan Tewksbury: Sales microservice
 
 ######
@@ -19,9 +19,9 @@ Team:
 ## URLs and Ports
 
 ### Front End URLs
-    Port 3000, takes about 2-3 minutes to load from typing 'Docker Compose Up'
+    Access front end URLs on Port 3000
 
-    Main Page: http://localhost:3000/
+    The main page is located on http://localhost:3000/
 
  **Inventory**
 
@@ -116,7 +116,8 @@ Team:
 #### Create a manufacturer:
 **URL**
     http://localhost:8100/api/manufacturers/
-    Creating a manufacturer only requires a name. An id is automatically created.
+    Only required parameter is `name`
+    ID is automatically created
 
     {
     "name": "Chrysler"
@@ -125,8 +126,8 @@ Team:
 #### Creating, Getting, and Updating a single manufacturer:
 **URL**
     http://localhost:8100/api/manufacturers/:id/
-    Updating a single manufacturer only requires a name.
-    The id cannot be altered.
+    Only required parameter is `name`
+    ID cannot be altered
 
    {
     "href": "/api/manufacturers/1/",
@@ -137,7 +138,7 @@ Team:
 #### Getting a list of manufacturers:
 **URL**
     http://localhost:8100/api/manufacturers/
-    The list of manufacturers is a dictionary with the key "manufacturers" set to a list of manufacturers.
+    Dictionary with the key "manufacturers" set to a list of manufacturers
 
     {
         "manufacturers": [
@@ -152,7 +153,7 @@ Team:
 #### Creating a vehicle model:
 **URL**
     http://localhost:8100/api/models/
-    Creating a vehicle model requires the model name, a URL of an image, and the id of the manufacturer.
+    Requires model name, image URL, and manufacturer ID
 
    {
         "name": "Sebring",
@@ -163,7 +164,7 @@ Team:
 #### Updating the vehicle model:
 **URL**
 	http://localhost:8100/api/models/:id/
-    Updating a vehicle model can take the name and/or the picture URL.
+    Optional parameters are name and image URL
 
     {
         "name": "Sebring",
@@ -173,7 +174,7 @@ Team:
 #### Getting the detail of, creating, or updating a vehicle model:
 **URL**
     	http://localhost:8100/api/models/:id/
-        Getting the detail of a vehicle model, or the return value from creating or updating a vehicle model, returns the model's information and the manufacturer's information.
+        Returns model information and manufacturer information
 
     {
         "href": "/api/models/1/",
@@ -190,7 +191,7 @@ Team:
 #### Getting a list of vehicle models:
 **URL**
     http://localhost:8100/api/models/
-    Getting the detail of a vehicle model, or the return value from creating or updating a vehicle model, returns the model's information and the manufacturer's information.
+    Returns models and manufacturer information
 
     {
         "models": [
@@ -211,7 +212,7 @@ Team:
 #### Creating an automobile:
 **URL**
     http://localhost:8100/api/automobiles/
-    You can create an automobile with its color, year, VIN, and the id of the vehicle model.
+    Requires color, year, VIN, and id of the vehicle model
 
     {
         "color": "red",
@@ -223,7 +224,7 @@ Team:
 #### Getting the details of an automobile with its VIN:
 **URL**
     http://localhost:8100/api/automobiles/:vin/
-    The details for an automobile include its model and manufacturer.
+    Returns an automobile and includes model and manufacturer
 
     {
         "href": "/api/automobiles/1C3CC5FB2AN120174/",
@@ -247,7 +248,7 @@ Team:
 #### Updating an automobile:
 **URL**
     http://localhost:8100/api/automobiles/:vin/
-    You can update the color and/or year of an automobile.
+    Optional parameters are color and year
 
     {
         "color": "red",
@@ -284,13 +285,6 @@ Team:
 
 <br>
 
-## Service Microservice CRUD Route Documentation
-In Insomnia, sending the reponses for the list views and detail views at port 8080 with urls tied to the urls.py
-Sending JSON body with information (VIN, manufacturer, or model) for the create and update.
-Response: getting an object with information that was sent as the JSON body.
-
-<br>
-
 ## Sales Microservice CRUD Route Documentation
 
 #### Getting a List of Salespersons:
@@ -321,10 +315,9 @@ Response: getting an object with information that was sent as the JSON body.
 #### Getting, Updating, or Deleting Specific Salesperson:
 **URL:**
     http://localhost:8090/api/salesperson/:id/
-    To update a specific salesperson, you only need their name or employee number.
-    You cannot update their id.
-    To delete a specific salesperson, put the URL into insomnia with a delete method,
-    and no information is required.
+    Optional parameters are name or employee number
+    ID cannot be altered
+    To delete a specific salesperson, put the URL into insomnia with a delete method; no information is required
 
     {
         "id": 3,
@@ -335,8 +328,8 @@ Response: getting an object with information that was sent as the JSON body.
 #### Creating a Specific Salesperson:
 **URL:**
     http://localhost:8090/api/salesperson/
-    To create a specific salesperson, you need a name and employee number.
-    The id is automatically assigned and cannot be altered.
+    Required parameters are name and employee number
+    ID is automatically generated 
 
     {
         "name": "Adam",
@@ -374,10 +367,10 @@ Response: getting an object with information that was sent as the JSON body.
 #### Getting, Updating, or Deleting a Specific Customer:
 **URL**
     http://localhost:8090/api/customers/:id/
-    To update a specific customer, you only need name, address, or phone number.
-    You cannot change the ID.
-    To delete a specific customer, put the URL into insomnia with a delete method,
-    and no information is required.
+    Optional parameters are name, address, or phone number
+    ID cannot be altered
+    To delete a specific customer, put the URL into Insomnia with a delete method,
+    and no information is required
 
     {
         "id": 1,
@@ -389,8 +382,8 @@ Response: getting an object with information that was sent as the JSON body.
 #### Creating a Customer:
 **URL**
     http://localhost:8090/api/customers/
-    To create a customer, you need a name, address, and phone number.
-    The id is automatically assigned and cannot be altered.
+    Requires name, address, and phone number
+    ID is automatically generated 
 
     {
     "name": "Bunny Corcoran",
@@ -401,7 +394,7 @@ Response: getting an object with information that was sent as the JSON body.
 #### Getting a List of Sales Records:
 **URL**
     http://localhost:8090/api/salesrecords/
-    The list of sales records is a dictionary with the key "sales_records" set to a list of sales records.
+    The list of sales records is a dictionary with the key "sales_records" set to a list of sales records
 
     {
         "sales_records": [
@@ -468,7 +461,7 @@ Response: getting an object with information that was sent as the JSON body.
 #### Getting a Specific Sales Record:
 **URL**
     http://localhost:8090/api/salesrecords/:id/
-    Getting the detail of a sales record, or the return value from creating a sales record, returns the customer's information and the sales persons's information.
+    Returns customer and sales persons information
 
     {
         "id": 1,
@@ -528,27 +521,16 @@ is required.
 <br>
 
 #####
-## Service microservice
-Install Django app into Django project.
-Make models, views, and urls
-Use GET, POST, PUT, DELETE methods to test out in Insomnia
-Git push/pull/merge with main
-Use React for FrontEnd work
-
-
-<br>
-
-#####
 ## Sales microservice
 
-The sales microservice has three models: SalesPerson, Customer, and SalesRecord. The Customer model has name, address, and phone number fields to record the contact information for existing or potential customers. This is important so prospective leads can be followed up with and existing customers can be logged for potential further promotions. The SalesPerson model has name and employee number fields to record information about new or exisiting sales employees so each sales person's sales records can be tracked.
+The Sales microservice has three models: SalesPerson, Customer, and SalesRecord. The Customer model has name, address, and phone number fields to record the contact information for existing or potential customers. This feature allows sales representatives to follow up with prospective leads or to log existing customers for further promotions. The SalesPerson model has name and employee number fields to record information about new or existing sales employees, which allows managers to track sales records.
 
-The SalesRecord model has foreign keys for the SalesPerson model, the Customer Model, and the AutomobileVO object. Therefore, when a sales record is created, it is associated with a salesperson, a customer, and a specific automobile that is identified by its VIN number. The SalesRecord model also includes price to record the price of the sale.
+The SalesRecord model has foreign keys for the SalesPerson model, the Customer Model, and the AutomobileVO object. When a sales record is created, it is automatically associated with a salesperson, customer, and a specific automobile. The SalesRecord model also includes a price field to record the sale price.
 
-Additionally, each model has RESTful API endpoints to create, read, update, and delete data.
+Additionally, each model has REST endpoints to create, read, update, and delete data.
 
-To ensure that the sales microservice is always up-to-date with the inventory, a poller is used to periodically import the VIN numbers from the inventory microservice. A person cannot sell a car that is not listed in the inventory, nor can a person sell a car that has already been sold.
+A poller imports the VIN numbers from the inventory microservice to ensure the sales microservice is always up-to-date with inventory. 
 
-The sales microservice also provides a user interface for adding salespersons, customers, and sales records. The sales record feature does not allow a user to record a car as being sold twice. This feature is implemented with a drop-down menu that only shows the VIN numbers of cars that have not been previously sold. There is a list of all sales records with the ability to search for records by salesperson. This allows users to easily track the sales made by each salesperson.
+The Sales microservice also provides an intuitive user interface for adding salespersons, customers, and sales records. The sales record feature does not allow users to record that they have sold a car twice. It is implemented with a drop-down menu showing only the VIN numbers of cars that have not yet been sold. 
 
-Overall, the sales microservice is an important component of a larger system for managing an automobile dealership. By integrating with the inventory microservice and providing a user-friendly interface for tracking sales, the sales microservice helps ensure that the sales process is efficient and accurate.
+The Sales microservice is an important component of a larger system for managing an automobile dealership. By integrating with the inventory microservice and providing a user-friendly interface for tracking sales, the sales microservice helps ensure that the sales process is efficient and accurate.
